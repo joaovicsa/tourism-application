@@ -2,28 +2,25 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: StatelessWidgetExemplo("Olá Flutter - MaterialApp")),
+    const MaterialApp(home: StatelessWidgetExemplo("Explore Mundo - Detalhes")),
   );
 }
 
 class StatelessWidgetExemplo extends StatelessWidget {
   final String _appBarTitle;
-  StatelessWidgetExemplo(this._appBarTitle) : super();
+  const StatelessWidgetExemplo(this._appBarTitle, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    // 1. Definimos a Seção de Título como uma variável para organizar melhor o código
+    // Passo 5: Construindo a Seção de Título
     Widget titleSection = Container(
-      padding: const EdgeInsets.all(32), // Espaçamento interno de 32 pixels
+      padding: const EdgeInsets.all(32),
       child: Row(
         children: [
           Expanded(
-            /* A coluna de texto usa Expanded para ocupar o espaço disponível */
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, // Alinha o texto à esquerda
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /* Título em Negrito */
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: const Text(
@@ -31,7 +28,6 @@ class StatelessWidgetExemplo extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                /* Subtítulo em cinza */
                 Text(
                   'Kandersteg, Switzerland',
                   style: TextStyle(color: Colors.grey[500]),
@@ -39,10 +35,52 @@ class StatelessWidgetExemplo extends StatelessWidget {
               ],
             ),
           ),
-          /* Ícone de estrela e contador */
           Icon(Icons.star, color: Colors.red[500]),
           const Text('41'),
         ],
+      ),
+    );
+
+    // Passo 6: Método auxiliar para os botões
+    Column _buildButtonColumn(Color color, IconData icon, String label) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: color),
+          Container(
+            margin: const EdgeInsets.only(top: 8),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: color,
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Color color = Colors.blue;
+
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
+    // Passo 7: Seção de Texto
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'O Lago Oeschinen fica aos pés do Blüemlisalp nos Alpes Berneses. '
+        'Situado a 1.578 metros acima do nível do mar, é um dos lagos alpinos mais amplos.',
+        softWrap: true,
       ),
     );
 
@@ -51,11 +89,20 @@ class StatelessWidgetExemplo extends StatelessWidget {
         title: Text(_appBarTitle, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
-      // 2. Substituímos o Stack por uma Column no body
-      body: Column(
+      // Passo 9: Organizando tudo em uma ListView
+      body: ListView(
         children: [
-          // No futuro, aqui entrará sua Image.asset ou Image.network
-          titleSection, // Inserimos a seção de título que definimos acima
+          // Passo 8: Imagem de Destaque
+          // Dica: Se não tiver a imagem local, use Image.network para testar
+          Image.network(
+            'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
+            width: 600,
+            height: 240,
+            fit: BoxFit.cover,
+          ),
+          titleSection,
+          buttonSection,
+          textSection,
         ],
       ),
     );
