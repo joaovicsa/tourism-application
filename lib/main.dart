@@ -12,7 +12,6 @@ class StatelessWidgetExemplo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Passo 5: Construindo a Seção de Título
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32),
       child: Row(
@@ -41,7 +40,6 @@ class StatelessWidgetExemplo extends StatelessWidget {
       ),
     );
 
-    // Passo 6: Método auxiliar para os botões
     Column _buildButtonColumn(Color color, IconData icon, String label) {
       return Column(
         mainAxisSize: MainAxisSize.min,
@@ -74,7 +72,6 @@ class StatelessWidgetExemplo extends StatelessWidget {
       ],
     );
 
-    // Passo 7: Seção de Texto
     Widget textSection = Container(
       padding: const EdgeInsets.all(32),
       child: const Text(
@@ -89,11 +86,8 @@ class StatelessWidgetExemplo extends StatelessWidget {
         title: Text(_appBarTitle, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
-      // Passo 9: Organizando tudo em uma ListView
       body: ListView(
         children: [
-          // Passo 8: Imagem de Destaque
-          // Dica: Se não tiver a imagem local, use Image.network para testar
           Image.network(
             'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
             width: 600,
