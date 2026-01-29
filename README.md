@@ -1,17 +1,7 @@
-# my_app
+# Agencia de Viagens
 
-A new Flutter project.
+Projeto em Flutter
 
-## Getting Started
+## Trabalho Prático de Desenvolvimento de Aplicativos Móveis com Flutter 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# tourism-application" 
+O objetivo desta missão prática foi explorar o desenvolvimento de interfaces mobile utilizando o framework Flutter. A atividade visou a aplicação de conceitos fundamentais de layout, como a composição de widgets (MaterialApp, Scaffold, AppBar), a organização espacial de elementos (Row, Column, Stack) e o gerenciamento de conteúdo rolável através do ListView. Ao final, implementou-se uma interface para uma agência de viagens ("Explore Mundo"), demonstrando a capacidade de decompor um design complexo em componentes reutilizáveis.
