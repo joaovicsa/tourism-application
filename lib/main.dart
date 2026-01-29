@@ -12,28 +12,51 @@ class StatelessWidgetExemplo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Definimos a Seção de Título como uma variável para organizar melhor o código
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32), // Espaçamento interno de 32 pixels
+      child: Row(
+        children: [
+          Expanded(
+            /* A coluna de texto usa Expanded para ocupar o espaço disponível */
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Alinha o texto à esquerda
+              children: [
+                /* Título em Negrito */
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: const Text(
+                    'Oeschinen Lake Campground',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                /* Subtítulo em cinza */
+                Text(
+                  'Kandersteg, Switzerland',
+                  style: TextStyle(color: Colors.grey[500]),
+                ),
+              ],
+            ),
+          ),
+          /* Ícone de estrela e contador */
+          Icon(Icons.star, color: Colors.red[500]),
+          const Text('41'),
+        ],
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          _appBarTitle,
-          style: TextStyle(
-            color: Colors.white,
-          ), // Cor da fonte branca solicitada
-        ),
+        title: Text(_appBarTitle, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
-      // O corpo agora contém a Row com as 3 colunas
-      body: Center(
-        // Centraliza a pilha na tela
-        child: Stack(
-          alignment:
-              Alignment.topLeft, // Define onde os filhos começam a empilhar
-          children: [
-            Container(width: 250, height: 250, color: Colors.blue),
-            Container(width: 200, height: 200, color: Colors.red),
-            Container(width: 150, height: 150, color: Colors.yellow),
-          ],
-        ),
+      // 2. Substituímos o Stack por uma Column no body
+      body: Column(
+        children: [
+          // No futuro, aqui entrará sua Image.asset ou Image.network
+          titleSection, // Inserimos a seção de título que definimos acima
+        ],
       ),
     );
   }
